@@ -1,0 +1,53 @@
+<%- include('../partials/header'); -%>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <p class="lead">Doctors</p>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                    <img src="<%= doctor.image%>" class="card-img-top" >
+                    <div class="card-body">
+                        <p class="card-title float-right"><strong>Consultation Charges-</strong> Rs.<%= doctor.price %> valid for next 10 days</p>
+                        <h1 class="card-title"><a><%= doctor.name%></a></h1>
+                        <p class="card-text"><strong>Address- </strong> <%= doctor.description %></p>
+                        <p><strong>Submitted By- </strong>Dr <%= doctor.author.username %></em></p>
+                        <% if(currentUser && doctor.author.id.equals(currentUser.id)){ %>
+                            <a class="btn btn-xs btn-warning" href="/doctors/<%= doctor.id %>/edit">Edit</a>
+                            <form class="delete-form" action= "/doctors/<%= doctor.id %>?_method=DELETE" method ="POST">
+                                <button class ="btn btn-xs btn-danger">DELETE</button>
+                            </form>
+                        <% } %>
+                    </div>
+            </div>
+            <div id="space" class="card text-dark bg-light">
+                <div class="card-text text-right">
+                    <a class="btn btn-success" href="/doctors/<%= doctor.id%>/comments/new">Add New Comment</a>
+                </div>
+                <hr>
+                <% doctor.comments.forEach(function(comment){ %>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card-body">
+                                <strong class="card-text"><%= comment.author.username %></strong>
+                                <span class="card-text float-right">10 days ago</span>
+                                <p class="card-text">
+                                    <%= comment.text %>
+                                </p>
+                                <% if(currentUser && comment.author.id.equals(currentUser.id)){ %>
+                                    <!-- <a class="btn btn-xs btn-warning" href="/doctors/<%= doctor.id %>/comments/<%= comment.id %>/edit">Edit</a> -->
+                                    <form class="delete-form" action="/doctors/<%= doctor.id %>/comments/<%= comment.id %>?_method=DELETE" method="POST">
+                                        <input type ="submit" class="btn btn-danger" value="Delete">
+                                    </form>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- include('../partials/footer'); -%>

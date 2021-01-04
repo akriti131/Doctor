@@ -1,0 +1,29 @@
+<%- include('../partials/header'); -%>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <p class="lead">Manufacturers</p>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                    <img src="<%= manufacturer.image%>" class="card-img-top" >
+                    <div class="card-body">
+                        <p class="card-title float-right"><strong>Product Charges-</strong> Rs.<%= manufacturer.price %></p>
+                        <h1 class="card-title"><a><%= manufacturer.name%></a></h1>
+                        <p class="card-text"><strong>Details- </strong> <%= manufacturer.description %></p>
+                        <p><strong>Submitted By- </strong> <%= manufacturer.author.username %></em></p>
+                        <% if(currentUser && manufacturer.author.id.equals(currentUser.id)){ %>
+                            <a class="btn btn-xs btn-warning" href="/manufacturer/<%= manufacturer.id %>/edit">Edit</a>
+                            <form class="delete-form" action= "/manufacturer/<%= manufacturer.id %>?_method=DELETE" method ="POST">
+                                <button class ="btn btn-xs btn-danger">DELETE</button>
+                            </form>
+                        <% } %>
+                    </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+
+<%- include('../partials/footer'); -%>

@@ -1,0 +1,33 @@
+<%- include('../partials/header'); -%>
+
+<div class="container">
+    <header class="jumbotron">
+        <div class="container">
+            <h1>Welcome to Doctors Webpage</h1>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/doctors/new">Add new Doctor</a>
+            </p>
+            <p>
+                <a class="btn btn-primary btn-lg" href="/manufacturer">View Products</a>
+            </p>
+        </div>
+    </header>
+
+    <div class="row">
+        <% doctors.forEach(function(doctor){ %>
+            <div class="col-md-3 sm-6 ">
+                <div class = "card img-thumbnail " style="width: 18rem;">
+                    <div>
+                        <img class = "card-img-top" src = "<%= doctor.image %>" >
+                    </div>
+                    <div class="card-body text-center">
+                        <h4 class="card-title"> <%= doctor.name%></h4>
+                        <a href= "/doctors/<%= doctor.id %>" class = "btn btn-primary">More Info</a>
+                    </div>
+                 </div>
+            </div>
+        <%}); %>
+    </div>
+</div>
+
+<%- include('../partials/footer'); -%>

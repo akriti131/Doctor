@@ -1,0 +1,81 @@
+body {
+    background-color: #000;
+  }
+
+  #landing-header {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    padding-top: 40vh;
+  }
+
+  #landing-header h1 {
+    color: rgb(212, 23, 23);
+  }
+
+  .slideshow { 
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .slideshow li { 
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 0;
+    animation: imageAnimation 50s linear infinite; 
+  }
+
+  .slideshow li:nth-child(1) { 
+    background-image: url(https://static.toiimg.com/photo/msid-76714980/76714980.jpg?1422821) 
+  }
+  .slideshow li:nth-child(2) { 
+    background-image: url(https://jnj-content-lab.brightspotcdn.com/dims4/default/4f82fe4/2147483647/strip/true/crop/1440x666+0+0/resize/1440x666!/quality/90/?url=http%3A%2F%2Fjnj-brightspot.s3.amazonaws.com%2F82%2F87%2F1f02f86a4ddfb68d44840e7d8cf5%2Flede-doctorfrontlineschina.jpg);
+    animation-delay: 10s; 
+  }
+  .slideshow li:nth-child(3) { 
+    background-image: url(https://s.france24.com/media/display/9b5ae1e0-7a68-11ea-9ec0-005056a98db9/w:1280/p:16x9/Italie%20-%20covid-19.webp);
+    animation-delay: 20s; 
+  }
+  .slideshow li:nth-child(4) { 
+    background-image: url(https://assets.bwbx.io/images/users/iqjWHBFdfxIU/isVXewe6LtQ8/v1/1000x-1.jpg);
+    animation-delay: 30s; 
+  }
+  .slideshow li:nth-child(5) { 
+    background-image: url(https://mk0ehealtheletsj3t14.kinstacdn.com/wp-content/uploads/2019/07/National-Doctor%E2%80%99s-Day.jpg);
+    animation-delay: 40s; 
+  }
+
+  @keyframes imageAnimation { 
+    0% { 
+      opacity: 0; 
+      animation-timing-function: ease-in;
+    }
+    10% {
+      opacity: 1;
+      animation-timing-function: ease-out;
+    }
+    20% {
+      opacity: 1
+    }
+    30% {
+      opacity: 0
+    }
+  }
+
+  .no-cssanimations .slideshow li {
+	opacity: 1;
+}
